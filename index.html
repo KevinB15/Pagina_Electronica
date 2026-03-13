@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ley de Ohm y Ley de Watt</title>
+
+<style>
+body{
+    background-color:#eeeeee;
+    font-family:Arial;
+    text-align:center;
+}
+
+div{
+    background:white;
+    margin:20px;
+    padding:20px;
+    border-radius:8px;
+}
+</style>
+
+<script>
+
+function calcularOhm(){
+
+var corriente = document.getElementById("corriente").value;
+var resistencia = document.getElementById("resistencia").value;
+
+var voltaje = corriente * resistencia;
+
+document.getElementById("resultadoOhm").innerHTML =
+"Voltaje = " + voltaje + " V";
+
+}
+
+function calcularWatt(){
+
+var voltaje = document.getElementById("voltaje").value;
+var corriente = document.getElementById("corriente2").value;
+
+var potencia = voltaje * corriente;
+
+document.getElementById("resultadoWatt").innerHTML =
+"Potencia = " + potencia + " W";
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<h1>Ley de Ohm y Ley de Watt</h1>
+
+<div>
+
+<h2>Ley de Ohm</h2>
+
+<h3>¿Qué es?</h3>
+<p>
+La Ley de Ohm es una regla de la electricidad que explica la relación
+entre el voltaje, la corriente y la resistencia en un circuito eléctrico.
+</p>
+
+<h3>¿Para qué sirve?</h3>
+<p>
+Sirve para calcular cómo funciona la electricidad en un circuito y
+para saber cuánto voltaje, corriente o resistencia hay en un sistema eléctrico.
+</p>
+
+<h3>Características</h3>
+<ul>
+<li>Relaciona voltaje, corriente y resistencia.</li>
+<li>Se usa para analizar circuitos eléctricos.</li>
+<li>Su fórmula principal es V = I × R.</li>
+</ul>
+
+<h3>Fórmula</h3>
+<p>V = I × R</p>
+
+<h3>Calculadora</h3>
+
+<input type="number" id="corriente" placeholder="Corriente (I)">
+<br><br>
+
+<input type="number" id="resistencia" placeholder="Resistencia (R)">
+<br><br>
+
+<button onclick="calcularOhm()">Calcular Voltaje</button>
+
+<p id="resultadoOhm"></p>
+
+</div>
+
+
+<div>
+
+<h2>Ley de Watt</h2>
+
+<h3>¿Qué es?</h3>
+<p>
+La Ley de Watt explica la relación entre la potencia eléctrica,
+el voltaje y la corriente en un circuito.
+</p>
+
+<h3>¿Para qué sirve?</h3>
+<p>
+Sirve para calcular la potencia que consume un dispositivo eléctrico
+o la energía que utiliza un circuito.
+</p>
+
+<h3>Características</h3>
+<ul>
+<li>Relaciona potencia, voltaje y corriente.</li>
+<li>Se usa para calcular el consumo de energía.</li>
+<li>Su fórmula principal es P = V × I.</li>
+</ul>
+
+<h3>Fórmula</h3>
+<p>P = V × I</p>
+
+<h3>Calculadora</h3>
+
+<input type="number" id="voltaje" placeholder="Voltaje (V)">
+<br><br>
+
+<input type="number" id="corriente2" placeholder="Corriente (I)">
+<br><br>
+
+<button onclick="calcularWatt()">Calcular Potencia</button>
+
+<p id="resultadoWatt"></p>
+
+</div>
+
+</body>
+</html>
