@@ -1,137 +1,172 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+<meta charset="UTF-8">
 <title>Ley de Ohm y Ley de Watt</title>
 
 <style>
 body{
-    background-color:#eeeeee;
-    font-family:Arial;
-    text-align:center;
+    margin:0;
+    font-family:Arial, sans-serif;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color:#333;
 }
 
-div{
-    background:white;
-    margin:20px;
+header{
+    background:#1e3c72;
+    color:white;
     padding:20px;
+    text-align:center;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:20px;
+}
+
+.card{
+    background:white;
+    margin:20px 0;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+    transition:transform 0.2s;
+}
+
+.card:hover{
+    transform:scale(1.02);
+}
+
+h2{
+    color:#1e3c72;
+}
+
+input{
+    padding:10px;
+    width:80%;
+    max-width:300px;
     border-radius:8px;
+    border:1px solid #ccc;
+}
+
+button{
+    padding:10px 20px;
+    border:none;
+    border-radius:8px;
+    background:#4facfe;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+button:hover{
+    background:#1e3c72;
+}
+
+.resultado{
+    font-size:18px;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+.media{
+    margin:20px 0;
+    padding:20px;
+    border:2px dashed #ccc;
+    border-radius:10px;
+    text-align:center;
+    color:#777;
+}
+
+footer{
+    text-align:center;
+    padding:15px;
+    background:#1e3c72;
+    color:white;
+    margin-top:20px;
 }
 </style>
 
 <script>
-
 function calcularOhm(){
-
-var corriente = document.getElementById("corriente").value;
-var resistencia = document.getElementById("resistencia").value;
-
-var voltaje = corriente * resistencia;
-
-document.getElementById("resultadoOhm").innerHTML =
-"Voltaje = " + voltaje + " V";
-
+    var corriente = document.getElementById("corriente").value;
+    var resistencia = document.getElementById("resistencia").value;
+    var voltaje = corriente * resistencia;
+    document.getElementById("resultadoOhm").innerHTML = "Voltaje = " + voltaje + " V";
 }
 
 function calcularWatt(){
-
-var voltaje = document.getElementById("voltaje").value;
-var corriente = document.getElementById("corriente2").value;
-
-var potencia = voltaje * corriente;
-
-document.getElementById("resultadoWatt").innerHTML =
-"Potencia = " + potencia + " W";
-
+    var voltaje = document.getElementById("voltaje").value;
+    var corriente = document.getElementById("corriente2").value;
+    var potencia = voltaje * corriente;
+    document.getElementById("resultadoWatt").innerHTML = "Potencia = " + potencia + " W";
 }
-
 </script>
 
 </head>
 
 <body>
 
-<h1>Ley de Ohm y Ley de Watt</h1>
+<header>
+<h1>Ley de Ohm y Ley de Watt ⚡</h1>
+<p>Aprende y calcula fácilmente</p>
+</header>
 
-<div>
+<div class="container">
 
+<div class="card">
 <h2>Ley de Ohm</h2>
 
-<h3>¿Qué es?</h3>
-<p>
-La Ley de Ohm es una regla de la electricidad que explica la relación
-entre el voltaje, la corriente y la resistencia en un circuito eléctrico.
-</p>
+<p>La Ley de Ohm explica la relación entre voltaje, corriente y resistencia.</p>
 
-<h3>¿Para qué sirve?</h3>
-<p>
-Sirve para calcular cómo funciona la electricidad en un circuito y
-para saber cuánto voltaje, corriente o resistencia hay en un sistema eléctrico.
-</p>
-
-<h3>Características</h3>
-<ul>
-<li>Relaciona voltaje, corriente y resistencia.</li>
-<li>Se usa para analizar circuitos eléctricos.</li>
-<li>Su fórmula principal es V = I × R.</li>
-</ul>
+<div class="media">📷 Espacio para imagen de circuito</div>
 
 <h3>Fórmula</h3>
-<p>V = I × R</p>
+<p><b>V = I × R</b></p>
 
 <h3>Calculadora</h3>
-
 <input type="number" id="corriente" placeholder="Corriente (I)">
 <br><br>
-
 <input type="number" id="resistencia" placeholder="Resistencia (R)">
 <br><br>
-
 <button onclick="calcularOhm()">Calcular Voltaje</button>
 
-<p id="resultadoOhm"></p>
+<p id="resultadoOhm" class="resultado"></p>
+
+<div class="media">🎥 Espacio para video explicativo</div>
 
 </div>
 
-
-<div>
-
+<div class="card">
 <h2>Ley de Watt</h2>
 
-<h3>¿Qué es?</h3>
-<p>
-La Ley de Watt explica la relación entre la potencia eléctrica,
-el voltaje y la corriente en un circuito.
-</p>
+<p>La Ley de Watt relaciona potencia, voltaje y corriente.</p>
 
-<h3>¿Para qué sirve?</h3>
-<p>
-Sirve para calcular la potencia que consume un dispositivo eléctrico
-o la energía que utiliza un circuito.
-</p>
-
-<h3>Características</h3>
-<ul>
-<li>Relaciona potencia, voltaje y corriente.</li>
-<li>Se usa para calcular el consumo de energía.</li>
-<li>Su fórmula principal es P = V × I.</li>
-</ul>
+<div class="media">📷 Espacio para imagen de potencia</div>
 
 <h3>Fórmula</h3>
-<p>P = V × I</p>
+<p><b>P = V × I</b></p>
 
 <h3>Calculadora</h3>
-
 <input type="number" id="voltaje" placeholder="Voltaje (V)">
 <br><br>
-
 <input type="number" id="corriente2" placeholder="Corriente (I)">
 <br><br>
-
 <button onclick="calcularWatt()">Calcular Potencia</button>
 
-<p id="resultadoWatt"></p>
+<p id="resultadoWatt" class="resultado"></p>
+
+<div class="media">🎥 Espacio para video explicativo</div>
 
 </div>
+
+</div>
+
+<footer>
+<p>Proyecto educativo - Electricidad básica</p>
+</footer>
 
 </body>
 </html>
