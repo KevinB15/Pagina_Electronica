@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fundamentos de Electricidad</title>
+
+<style>
+/* CONTENEDOR DEL CIRCUITO */
+.circuit-container{
+    position:relative;
+    width:700px;
+    height:350px;
+    margin:auto;
+    margin-top:30px;
+    margin-bottom:30px;
+}
+
+/* PILA */
+.battery{
+    position:absolute;
+    left:50px;
+    top:120px;
+    width:70px;
+    height:120px;
+
+    border:2px solid #c084fc;
+    border-radius:10px;
+
+    background:rgba(0,0,0,0.7);
+
+    box-shadow:
+    0 0 15px #a855f7;
+}
+
+.plus,
+.minus{
+    text-align:center;
+    font-size:30px;
+    color:white;
+    margin-top:15px;
+}
+
+/* CABLES */
+.wire{
+    position:absolute;
+    background:#c084fc;
+
+    box-shadow:0 0 15px #a855f7;
+}
+
+.top{
+    top:100px;
+    left:120px;
+    width:420px;
+    height:4px;
+}
+
+.right{
+    top:100px;
+    left:540px;
+    width:4px;
+    height:120px;
+}
+
+.bottom{
+    top:220px;
+    left:120px;
+    width:420px;
+    height:4px;
+}
+
+.left{
+    top:100px;
+    left:120px;
+    width:4px;
+    height:124px;
+}
+
+/* BOMBILLO */
+.bulb{
+    position:absolute;
+    top:145px;
+    left:500px;
+
+    font-size:70px;
+
+    animation:glow 1s infinite alternate;
+}
+
+/* BRILLO */
+@keyframes glow{
+    from{
+        filter:drop-shadow(0 0 10px #fff);
+    }
+
+    to{
+        filter:
+        drop-shadow(0 0 20px yellow)
+        drop-shadow(0 0 40px orange);
+    }
+}
+
+/* ELECTRONES */
+.electron{
+    position:absolute;
+
+    width:15px;
+    height:15px;
+
+    border-radius:50%;
+
+    background:#00bfff;
+
+    box-shadow:0 0 15px #00bfff;
+}
+
+/* MOVIMIENTO */
+.e1{
+    animation:moveElectron 4s linear infinite;
+}
+
+.e2{
+    animation:moveElectron 4s linear infinite 2s;
+}
+
+@keyframes moveElectron{
+
+    0%{
+        top:220px;
+        left:120px;
+    }
+
+    25%{
+        top:220px;
+        left:540px;
+    }
+
+    50%{
+        top:100px;
+        left:540px;
+    }
+
+    75%{
+        top:100px;
+        left:120px;
+    }
+
+    100%{
+        top:220px;
+        left:120px;
+    }
+}
+
+/* FLECHAS */
+.arrow-real{
+    position:absolute;
+    bottom:10px;
+    left:80px;
+
+    color:#00bfff;
+    font-weight:bold;
+
+    text-shadow:0 0 10px #00bfff;
+}
+
+.arrow-conv{
+    position:absolute;
+    top:40px;
+    right:80px;
+
+    color:#ff3b3b;
+    font-weight:bold;
+
+    text-shadow:0 0 10px red;
+}
+
+/* EXPLICACION */
+.explicacion{
+    margin-top:30px;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+/* FONDO FUTURISTA */
+body{
+    background:
+    linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.9)),
+    url("https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzlycXBvNmFwcG5ibDJ2eWY3aGZ0ZjJoZjV1cDltaDFwZzJ3bDJvMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l1J9EXOsgzbYLm8EM/giphy.gif")
+    no-repeat center center fixed;
+
+    background-size:cover;
+    color:white;
+}
+
+/* HEADER */
+header{
+    text-align:center;
+    padding:30px;
+    background:rgba(0,0,0,0.7);
+    border-bottom:2px solid #a855f7;
+
+    box-shadow:
+    0 0 10px #a855f7,
+    0 0 25px #7e22ce;
+}
+
+header h1{
+    letter-spacing:4px;
+    font-size:40px;
+    text-shadow:0 0 15px #c084fc;
+}
+
+header p{
+    margin-top:10px;
+    color:#ddd;
+}
+
+/* CONTENEDOR */
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:30px;
+}
+
+/* BLOQUES */
+.card{
+    background:rgba(0,0,0,0.75);
+    margin-bottom:30px;
+    padding:30px;
+    border-radius:18px;
+
+    border:2px solid #a855f7;
+
+    box-shadow:
+    0 0 15px #a855f7,
+    inset 0 0 15px #7e22ce;
+
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:scale(1.01);
+
+    box-shadow:
+    0 0 25px #c084fc,
+    inset 0 0 20px #a855f7;
+}
+
+/* TITULOS */
+h2{
+    color:#c084fc;
+    margin-bottom:20px;
+    text-shadow:0 0 10px #a855f7;
+}
+
+h3{
+    margin-top:20px;
+    margin-bottom:10px;
+    color:#ffffff;
+}
+
+/* TEXTOS */
+p{
+    line-height:1.7;
+    margin-bottom:12px;
+    color:#ddd;
+}
+
+/* LISTAS */
+ul{
+    margin-left:20px;
+    margin-top:10px;
+}
+
+li{
+    margin-bottom:10px;
+    color:#ddd;
+}
+
+/* DESTACADOS */
+.highlight{
+    color:#c084fc;
+    font-weight:bold;
+}
+
+/* SEPARADOR */
+.line{
+    width:100%;
+    height:2px;
+    background:#a855f7;
+    margin:25px 0;
+
+    box-shadow:0 0 10px #a855f7;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:20px;
+    margin-top:20px;
+
+    background:rgba(0,0,0,0.7);
+
+    border-top:2px solid #a855f7;
+
+    box-shadow:0 0 15px #a855f7;
+}
+
+footer p{
+    color:#ddd;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1> FUNDAMENTOS DE ELECTRICIDAD </h1>
+    <p>Conceptos básicos de electricidad y electrónica</p>
+</header>
+
+<div class="container">
+
+<!-- BLOQUE 1 -->
+<div class="card">
+
+<h2> Bloque 1: Fundamentos</h2>
+
+<h3>Electricidad</h3>
+<p><span class="highlight">¿Qué es?</span> Es una forma de energía producida por el movimiento de electrones.</p>
+<p><span class="highlight">Ejemplo:</span> Encender una lámpara.</p>
+
+<div class="line"></div>
+
+<h3>Electrón</h3>
+<p><span class="highlight">¿Qué es?</span> Es una partícula pequeña con carga negativa que está dentro de los átomos.</p>
+<p><span class="highlight">Símbolo:</span> e⁻</p>
+<p><span class="highlight">Ejemplo:</span> Los electrones se mueven por los cables del cargador.</p>
+
+<div class="line"></div>
+
+<h3>Movimiento de electrones</h3>
+<p><span class="highlight">¿Qué es?</span> Es el desplazamiento de electrones por un material conductor.</p>
+<p><span class="highlight">Ejemplo:</span> Cuando conectas el celular y empieza a cargar.</p>
+
+</div>
+
+<!-- BLOQUE 2 -->
+<div class="card">
+
+<h2> Bloque 2: Flujo eléctrico</h2>
+
+<h3>Sentido Real</h3>
+<p>Es el movimiento verdadero de los electrones: del negativo al positivo.</p>
+<p><span class="highlight">Símbolo:</span> Flechas de (-) a (+)</p>
+
+<div class="line"></div>
+
+<h3>Sentido Convencional</h3>
+<p>Es el sentido usado en electrónica para analizar circuitos: del positivo al negativo.</p>
+<p><span class="highlight">Símbolo:</span> Flechas de (+) a (-)</p>
+
+</div>
+
+<!-- BLOQUE 3 -->
+<div class="card">
+
+<h2> Bloque 3: Circuitos</h2>
+
+<h3>Ánodo</h3>
+<p>Terminal por donde entra la corriente convencional.</p>
+
+<h3>Cátodo</h3>
+<p>Terminal por donde sale la corriente convencional.</p>
+
+<h3>Fuente de alimentación</h3>
+<p>Elemento que entrega energía eléctrica.</p>
+
+<h3>Receptor o carga eléctrica</h3>
+<p>Dispositivo que usa la energía eléctrica.</p>
+
+<h3>Circuito eléctrico</h3>
+<p>Camino cerrado por donde circula la corriente.</p>
+
+</div>
+
+<!-- BLOQUE 4 -->
+<div class="card">
+
+<h2> Bloque 4: Electricidad vs Electrónica</h2>
+
+<p><span class="highlight">Electricidad:</span> Transporta energía.</p>
+
+<p><span class="highlight">Electrónica:</span> Controla esa energía usando componentes.</p>
+
+<div class="line"></div>
+
+<p><span class="highlight">Ejemplo:</span> La electricidad enciende el televisor y la electrónica hace que funcione correctamente.</p>
+
+</div>
+
+<!-- BLOQUE 5 -->
+<div class="card">
+
+<h2> Bloque 5: Magnitudes eléctricas</h2>
+
+<ul>
+<li><span class="highlight">Carga eléctrica:</span> Cantidad de electricidad que tiene un cuerpo.</li>
+
+<li><span class="highlight">Corriente eléctrica:</span> Flujo de electrones.</li>
+
+<li><span class="highlight">Voltaje:</span> Fuerza que mueve los electrones.</li>
+
+<li><span class="highlight">Resistencia:</span> Oposición al paso de la corriente.</li>
+
+<li><span class="highlight">Potencia eléctrica:</span> Cantidad de energía usada.</li>
+</ul>
+
+</div>
+
+<!-- FASE 2 -->
+<div class="card">
+
+<h2> Fase 2: Análisis</h2>
+
+<ul>
+<li>Los electrones necesitan energía para moverse por el circuito.</li>
+
+<li>El sentido convencional facilita entender los circuitos.</li>
+
+<li>Sin resistencia podría ocurrir un cortocircuito.</li>
+
+<li>Parte de la potencia se transforma en calor.</li>
+
+<li>El cobre conduce bien la electricidad y el plástico protege.</li>
+</ul>
+
+</div>
+
+<!-- FASE 3 -->
+<div class="card">
+
+<h2> Fase 3: Aplicación</h2>
+
+<h3>¿Qué magnitud cambió?</h3>
+<p>El voltaje cambió de 110V/220V a 5V.</p>
+
+<h3>¿Qué transformación ocurrió?</h3>
+<p>El cargador reduce el voltaje para proteger el celular.</p>
+
+<h3>¿Dónde está presente la corriente?</h3>
+<p>En los cables y dentro del celular mientras carga.</p>
+
+<h3>¿Se usa electricidad, electrónica o ambas?</h3>
+<p>Ambas. La electricidad transporta energía y la electrónica controla el funcionamiento.</p>
+
+</div>
+
+<!-- FASE 4 -->
+<div class="card">
+
+<h2> Fase 4: Analogía</h2>
+
+<p><span class="highlight">Voltaje:</span> Fuerza que hace avanzar los carros.</p>
+
+<p><span class="highlight">Corriente:</span> Cantidad de carros moviéndose.</p>
+
+<p><span class="highlight">Resistencia:</span> Trancones o semáforos que dificultan el paso.</p>
+
+</div>
+
+<!-- FASE 5 -->
+<div class="card">
+
+<h2> Fase 5: Predicción Visual</h2>
+
+<div class="circuit-container">
+
+    <!-- PILA -->
+    <div class="battery">
+        <div class="plus">+</div>
+        <div class="minus">−</div>
+    </div>
+
+    <!-- CABLE -->
+    <div class="wire top"></div>
+    <div class="wire right"></div>
+    <div class="wire bottom"></div>
+    <div class="wire left"></div>
+
+    <!-- BOMBILLO -->
+    <div class="bulb">
+        💡
+    </div>
+
+    <!-- ELECTRONES -->
+    <div class="electron e1"></div>
+    <div class="electron e2"></div>
+
+    <!-- FLECHAS -->
+    <div class="arrow-real">⬅ Sentido Real</div>
+    <div class="arrow-conv">Sentido Convencional ➡</div>
+
+</div>
+
+<div class="explicacion">
+
+<p>
+<span class="highlight">Sentido Real:</span>
+Los electrones se mueven desde el polo negativo hacia el positivo.
+</p>
+
+<p>
+<span class="highlight">Sentido Convencional:</span>
+La corriente se representa del polo positivo al negativo para facilitar el análisis eléctrico.
+</p>
+
+<p>
+<span class="highlight">¿Por qué el bombillo enciende igual?</span>
+Porque aunque los sentidos sean opuestos, la corriente sigue circulando por todo el circuito y permite transferir energía al bombillo.
+</p>
+
+<p>
+<span class="highlight">Mayor energía:</span>
+Cerca del polo positivo de la pila.
+</p>
+
+<p>
+<span class="highlight">Menor energía:</span>
+Después de pasar por el bombillo, ya que parte de la energía se transforma en luz y calor.
+</p>
+
+</div>
+
+</div>
+<footer>
+    <p>Holaaa :p</p>
+</footer>
+
+</body>
+</html>
