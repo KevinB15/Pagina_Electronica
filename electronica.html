@@ -5,87 +5,197 @@
 <title>Ley de Ohm y Ley de Watt</title>
 
 <style>
-body{
-    margin:0;
-    font-family:Arial, sans-serif;
-    background: linear-gradient(135deg, #4facfe, #00f2fe);
-    color:#333;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+    scroll-behavior: smooth;
 }
 
-header{
-    background:#1e3c72;
+body {
+    background:
+    linear-gradient(rgba(0,0,0,0.85),rgba(0,0,0,0.95)),
+    url("https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3UxaWg4OHYwcHJlMnhiYXU4cWxvaXprazZoM2RjOHpmZnFzbTdhZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/cmNOuHOgTq3MODgSeP/giphy.gif");
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+}
+
+/* HEADER */
+header {
+    text-align: center;
+    padding: 35px;
+    background: rgba(0,0,0,0.7);
+    border-bottom: 2px solid #a855f7;
+    box-shadow: 0 0 15px #9333ea;
+}
+
+header h1 {
+    font-size: 45px;
+    color: #c084fc;
+    letter-spacing: 3px;
+    animation: glowTitle 2s infinite alternate;
+}
+
+header p {
+    margin-top: 10px;
+    color: #ddd;
+    font-size: 18px;
+}
+
+@keyframes glowTitle {
+    from { text-shadow: 0 0 10px #9333ea; }
+    to { text-shadow: 0 0 20px #c084fc, 0 0 40px #a855f7; }
+}
+
+/* CONTENEDOR */
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    padding: 30px;
+}
+
+/* TARJETAS */
+.card {
+    background: rgba(0,0,0,0.8);
+    border: 2px solid #9333ea;
+    border-radius: 20px;
+    padding: 30px;
+    margin: 35px 0;
+    box-shadow: 0 0 15px #9333ea, inset 0 0 15px #6b21a8;
+    animation: fadeUp 1s ease;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 25px #c084fc, inset 0 0 20px #a855f7;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+    color: #c084fc;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #c084fc;
+    border-bottom: 1px solid rgba(192, 132, 252, 0.3);
+    padding-bottom: 10px;
+}
+
+h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #e9d5ff;
+}
+
+p {
+    line-height: 1.7;
+    color: #ddd;
+    margin-bottom: 20px;
+}
+
+b {
+    color: #c084fc;
+}
+
+/* IMÁGENES TEMÁTICAS */
+img {
+    width: 100%;
+    max-width: 450px;
+    display: block;
+    margin: auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border-radius: 15px;
+    border: 2px solid #a855f7;
+    background: #111;
+    padding: 8px;
+    box-shadow: 0 0 15px #9333ea;
+    transition: 0.4s;
+}
+
+img:hover {
+    transform: scale(1.04);
+    box-shadow: 0 0 25px #c084fc, 0 0 45px #a855f7;
+}
+
+/* INPUTS */
+input {
+    padding: 12px;
+    width: 80%;
+    max-width: 300px;
+    border-radius: 8px;
+    border: 2px solid #9333ea;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: #c084fc;
+    box-shadow: 0 0 10px #c084fc;
+}
+.btn-home{
+    position:fixed;
+    left:20px;
+    bottom:20px;
+    background:#7e22ce;
     color:white;
-    padding:20px;
-    text-align:center;
-    box-shadow:0 4px 10px rgba(0,0,0,0.2);
-}
-
-.container{
-    max-width:1000px;
-    margin:auto;
-    padding:20px;
-}
-
-.card{
-    background:white;
-    margin:20px 0;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 8px 20px rgba(0,0,0,0.15);
-    transition:transform 0.2s;
-}
-
-.card:hover{
-    transform:scale(1.02);
-}
-
-h2{
-    color:#1e3c72;
-}
-
-input{
-    padding:10px;
-    width:80%;
-    max-width:300px;
-    border-radius:8px;
-    border:1px solid #ccc;
-}
-
-button{
-    padding:10px 20px;
-    border:none;
-    border-radius:8px;
-    background:#4facfe;
-    color:white;
-    cursor:pointer;
+    padding:14px 24px;
+    border-radius:14px;
+    text-decoration:none;
     font-weight:bold;
+    box-shadow:0 0 15px #a855f7;
+    z-index:999;
+    transition:0.3s;
 }
 
-button:hover{
-    background:#1e3c72;
+.btn-home:hover{
+    transform:scale(1.08);
+    background:#9333ea;
 }
 
-.resultado{
-    font-size:18px;
-    font-weight:bold;
-    margin-top:10px;
+
+/* BOTONES */
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 12px;
+    background: #7e22ce;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: 5px 0;
 }
 
-.media{
-    margin:20px 0;
-    padding:20px;
-    border:2px dashed #ccc;
-    border-radius:10px;
-    text-align:center;
-    color:#777;
+button:hover {
+    transform: scale(1.05);
+    background: #9333ea;
+    box-shadow: 0 0 10px #c084fc;
 }
 
-footer{
-    text-align:center;
-    padding:15px;
-    background:#1e3c72;
-    color:white;
-    margin-top:20px;
+.resultado {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #34d399;
+    text-shadow: 0 0 5px #34d399;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 25px;
+    background: black;
+    border-top: 2px solid #9333ea;
 }
 </style>
 
@@ -94,14 +204,14 @@ function calcularOhm(){
     var corriente = document.getElementById("corriente").value;
     var resistencia = document.getElementById("resistencia").value;
     var voltaje = corriente * resistencia;
-    document.getElementById("resultadoOhm").innerHTML = "Voltaje = " + voltaje + " V";
+    document.getElementById("resultadoOhm").innerHTML = "⚡ Voltaje = " + voltaje + " V";
 }
 
 function calcularWatt(){
     var voltaje = document.getElementById("voltaje").value;
     var corriente = document.getElementById("corriente2").value;
     var potencia = voltaje * corriente;
-    document.getElementById("resultadoWatt").innerHTML = "Potencia = " + potencia + " W";
+    document.getElementById("resultadoWatt").innerHTML = "🔥 Potencia = " + potencia + " W";
 }
 </script>
 
@@ -110,78 +220,61 @@ function calcularWatt(){
 <body>
 
 <header>
-<h1>Ley de Ohm y Ley de Watt </h1>
-<p>Aprende y calcula fácilmente</p>
+    <h1>Ley de Ohm y Ley de Watt</h1>
+    <p>Aprende y calcula fácilmente</p>
 </header>
 
 <div class="container">
 
-<div class="card">
-<h2>Ley de Ohm</h2>
+    <div class="card">
+        <h2>Ley de Ohm</h2>
 
-<style>
-p {
-    margin-bottom: 20px; /* espacio entre párrafos */
-}
-</style>
+        <p>La Ley de Ohm es un principio fundamental de la electricidad que establece que la corriente eléctrica que circula a través de un conductor es directamente proporcional al voltaje aplicado e inversamente proporcional a la resistencia del material. Esto significa que, si el voltaje aumenta, la corriente también aumenta, y si la resistencia aumenta, la corriente disminuye.</p>
+        
+        <p>Esta ley permite comprender y calcular el comportamiento de los circuitos eléctricos, ya que relaciona tres magnitudes básicas: el voltaje (V), la corriente (I) y la resistencia (R). Se representa mediante la fórmula: V = I · R, la cual puede despejarse para encontrar cualquiera de las tres variables según sea necesario.</p>
+        
+        <p>En la vida cotidiana, la Ley de Ohm es importante porque ayuda a diseñar y analizar aparatos eléctricos, asegurando que funcionen correctamente y de forma segura.</p>
 
-<p>La Ley de Ohm es un principio fundamental de la electricidad que establece que la corriente eléctrica que circula a través de un conductor es directamente proporcional al voltaje aplicado e inversamente proporcional a la resistencia del material. Esto significa que, si el voltaje aumenta, la corriente también aumenta, y si la resistencia aumenta, la corriente disminuye.
-</p>
-<p>Esta ley permite comprender y calcular el comportamiento de los circuitos eléctricos, ya que relaciona tres magnitudes básicas: el voltaje (V), la corriente (I) y la resistencia (R). Se representa mediante la fórmula: V = I · R, la cual puede despejarse para encontrar cualquiera de las tres variables según sea necesario.
-</p>
-<p>En la vida cotidiana, la Ley de Ohm es importante porque ayuda a diseñar y analizar aparatos eléctricos, asegurando que funcionen correctamente y de forma segura.</p>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhnz1tCwvbrtd0ivY0EwD0CPDzrzmPVJZJnw&s" alt="Circuito Eléctrico y Ley de Ohm">
 
+        <h3>Fórmula</h3>
+        <p><b>V = I × R</b></p>
 
-<h3>Fórmula</h3>
-<p><b>V = I × R</b></p>
+        <h3>Calculadora</h3>
+        <input type="number" id="corriente" placeholder="Corriente (I)">
+        <br><br>
+        <input type="number" id="resistencia" placeholder="Resistencia (R)">
+        <br><br>
+        <button onclick="calcularOhm()">Calcular Voltaje</button>
 
-<h3>Calculadora</h3>
-<input type="number" id="corriente" placeholder="Corriente (I)">
-<br><br>
-<input type="number" id="resistencia" placeholder="Resistencia (R)">
-<br><br>
-<button onclick="calcularOhm()">Calcular Voltaje</button>
+        <p id="resultadoOhm" class="resultado"></p>
+    </div>
 
-<p id="resultadoOhm" class="resultado"></p>
+    <div class="card">
+        <h2>Ley de Watt</h2>
 
-<iframe width="100%" height="315" 
-src="https://www.youtube.com/watch?v=x99TPYOjiPA" 
-title="Video Ley de Ohm" 
-frameborder="0" 
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen 
-style="border-radius:10px;">
-</iframe>
+        <p>La Ley de Watt relaciona potencia, voltaje y corriente. Define la cantidad de energía eléctrica que un componente consume o genera en un instante de tiempo específico (medida en Vatios o Watts). Al igual que la Ley de Ohm, es indispensable para prevenir sobrecargas en las instalaciones eléctricas calculando el consumo exacto de los electrodomésticos y equipos industriales.</p>
 
-<div class="card">
-<h2>Ley de Watt</h2>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx7XkyFrSuFVsuag67PRnpunrepqgnFqa2vw&s" alt="Energía y Potencia Eléctrica">
 
-<p>La Ley de Watt relaciona potencia, voltaje y corriente.</p>
+        <h3>Fórmula</h3>
+        <p><b>P = V × I</b></p>
 
-<div class="media">📷 Espacio para imagen de potencia</div>
+        <h3>Calculadora</h3>
+        <input type="number" id="voltaje" placeholder="Voltaje (V)">
+        <br><br>
+        <input type="number" id="corriente2" placeholder="Corriente (I)">
+        <br><br>
+        <button onclick="calcularWatt()">Calcular Potencia</button>
 
-<h3>Fórmula</h3>
-<p><b>P = V × I</b></p>
-
-<h3>Calculadora</h3>
-<input type="number" id="voltaje" placeholder="Voltaje (V)">
-<br><br>
-<input type="number" id="corriente2" placeholder="Corriente (I)">
-<br><br>
-<button onclick="calcularWatt()">Calcular Potencia</button>
-
-<p id="resultadoWatt" class="resultado"></p>
-
-<div class="media">🎥 Espacio para video explicativo</div>
-
-</div>
+        <p id="resultadoWatt" class="resultado"></p>
+    </div>
 
 </div>
 
 <footer>
-<p>Proyecto educativo - Electricidad básica</p>
+    <p>Proyecto educativo - Electricidad básica</p>
 </footer>
-
+<a href="index.html" class="btn-home">⬅ Volver al inicio</a>
 </body>
 </html>
-
