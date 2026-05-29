@@ -101,8 +101,11 @@
     }
 }
 
-/* ELECTRONES */
-.electron{
+/*  ELECTRONES */
+
+.electron-real,
+.electron-conv{
+
     position:absolute;
 
     width:15px;
@@ -110,21 +113,34 @@
 
     border-radius:50%;
 
+    z-index:10;
+}
+
+/* AZULES */
+.electron-real{
+
     background:#00bfff;
 
-    box-shadow:0 0 15px #00bfff;
+    box-shadow:
+    0 0 10px #00bfff,
+    0 0 20px #00bfff;
+
+    animation:moveReal 6s linear infinite;
 }
 
-/* MOVIMIENTO */
-.e1{
-    animation:moveElectron 4s linear infinite;
+/* ROJOS */
+.electron-conv{
+
+    background:#ff2a2a;
+
+    box-shadow:
+    0 0 10px red,
+    0 0 20px red;
+
+    animation:moveConv 6s linear infinite;
 }
 
-.e2{
-    animation:moveElectron 4s linear infinite 2s;
-}
-
-@keyframes moveElectron{
+@keyframes moveReal{
 
     0%{
         top:220px;
@@ -151,6 +167,133 @@
         left:120px;
     }
 }
+
+/* SENTIDO CONVENCIONAL = RELOJ */
+@keyframes moveConv{
+
+    0%{
+        top:100px;
+        left:120px;
+    }
+
+    25%{
+        top:100px;
+        left:540px;
+    }
+
+    50%{
+        top:220px;
+        left:540px;
+    }
+
+    75%{
+        top:220px;
+        left:120px;
+    }
+
+    100%{
+        top:100px;
+        left:120px;
+    }
+}
+
+/* FLECHAS */
+.arrow-real{
+    position:absolute;
+    bottom:20px;
+    left:20px;
+
+    color:#00bfff;
+
+    font-size:22px;
+    font-weight:bold;
+
+    text-shadow:
+    0 0 10px #00bfff,
+    0 0 20px #00bfff;
+}
+
+.arrow-conv{
+    position:absolute;
+    top:20px;
+    right:20px;
+
+    color:#ff2a2a;
+
+    font-size:22px;
+    font-weight:bold;
+
+    text-shadow:
+    0 0 10px red,
+    0 0 20px red;
+}
+
+/* BOTON VOLVER */
+.btn-home{
+    position:fixed;
+    bottom:20px;
+    left:20px;
+
+    padding:12px 22px;
+
+    background:#7e22ce;
+    color:white;
+
+    text-decoration:none;
+    font-weight:bold;
+
+    border-radius:14px;
+
+    box-shadow:
+    0 0 15px #a855f7;
+
+    transition:0.3s;
+
+    z-index:999;
+}
+
+.btn-home:hover{
+    transform:scale(1.08);
+
+    box-shadow:
+    0 0 25px #c084fc;
+}
+
+/* BOTON SUBIR */
+.btn-top{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+
+    width:60px;
+    height:60px;
+
+    border:none;
+    border-radius:50%;
+
+    background:#7e22ce;
+    color:white;
+
+    font-size:30px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 0 15px #a855f7;
+
+    transition:0.3s;
+
+    z-index:999;
+}
+
+.btn-top:hover{
+    transform:scale(1.12);
+
+    box-shadow:
+    0 0 25px #c084fc;
+}
+
 
 /* FLECHAS */
 .arrow-real{
@@ -500,9 +643,18 @@ footer p{
         💡
     </div>
 
-    <!-- ELECTRONES -->
-    <div class="electron e1"></div>
-    <div class="electron e2"></div>
+    <!-- ELECTRONES AZULES -->
+    <div class="electron-real" style="animation-delay:0s;"></div>
+    <div class="electron-real" style="animation-delay:1s;"></div>
+    <div class="electron-real" style="animation-delay:2s;"></div>
+    <div class="electron-real" style="animation-delay:3s;"></div>
+    
+    <!-- ELECTRONES ROJOS -->
+    <div class="electron-conv" style="animation-delay:0.5s;"></div>
+    <div class="electron-conv" style="animation-delay:1.5s;"></div>
+    <div class="electron-conv" style="animation-delay:2.5s;"></div>
+    <div class="electron-conv" style="animation-delay:3.5s;"></div>
+
 
     <!-- FLECHAS -->
     <div class="arrow-real">⬅ Sentido Real</div>
@@ -543,6 +695,23 @@ Después de pasar por el bombillo, ya que parte de la energía se transforma en 
 <footer>
     <p>Holaaa :p</p>
 </footer>
+<!-- BOTON VOLVER -->
+<a href="index.html" class="btn-home">
+    ⬅ Volver al Inicio
+</a>
 
+<!-- BOTON SUBIR -->
+<button class="btn-top" onclick="scrollToTop()">
+    ↑
+</button>
+
+<script>
+function scrollToTop(){
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+</script>
 </body>
 </html>
